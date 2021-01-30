@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-user-restapi
+  labels:
+    app: udagram-user-restapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udagram-user-restapi
+  template:
+    metadata:
+      labels:
+        app: udagram-user-restapi
+    spec:
+      containers:
+        - name: udagram-user-restapi
+          image: sannaingtun/udagram-user-restapi
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3

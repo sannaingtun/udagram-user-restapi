@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: udagram-user-restapi
+  name: udagram-user-restapi-svc
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/udagram-user-restapi-svc
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: udagram-user-restapi
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
